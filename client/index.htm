@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--<script async src="/js"></script>
+	<link async rel="stylesheet" href="/css">-->
+	<title>Perspective Canvas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link async rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+		body {
+			padding: 0;
+			margin:0;
+		}
+		.navbar {
+			margin-bottom: -50px;	
+		}
+		canvas {
+			position: absolute;
+			z-index: -1;
+		}
+		#credits {
+			font-size: 12px;
+			position: absolute;
+			text-align: center;
+			width:100%;
+			top: 90%;
+			color:"#777777";
+		}		
+		#credits .heart{
+			font-size: 16px;
+		}
+		.btn-alert {
+			margin-left: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="form-inline">
+				<div class="form-group">
+					<label for="modeSelect">Drawing Mode:</label>
+					<select class="form-control" id="modeSelect" name="modeSelect">
+						<option value="0">Delete</option>
+						<option value="1" selected>1 Point</option>
+						<option value="2">2 Point</option>
+						<option value="3">3 Point</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="bgColor">BG Color</label>
+					<input type="color" name="bgColor" id="bgColor" class="cntr color" value="#ffffff">
+				</div>
+				<div class="form-group">
+					<label for="strokeColor">Stroke Color</label>
+					<input type="color" name="strokeColor" id="strokeColor" class="cntr color" value="#000000">
+				</div>
+				<div class="form-group">
+					<label for="fillColor">Fill Color</label>
+					<input type="color" name="fillColor" id="fillColor" class="cntr color" value="#ffffff">
+				</div>
+				<div class="form-group">
+					<label for="lineLengthX">Width</label>
+					<input type="number" name="lineLengthX" id="lineLengthX" class="cntr number form-control" value="20">
+				</div>
+				<div class="form-group half-width">
+					<label for="lineLengthY">Height</label>
+					<input type="number" name="lineLengthY" id="lineLengthY" class="cntr number form-control" value="20">
+				</div>
+				<button type="button" class="cntr btn btn-warning" name="clearCanvas" id="clearCanvas">Clear Scene</button>
+				<button type="button" class="cntr btn btn-info" name="saveLoadScene" id="saveLoadScene">Save/Load Scene</button>
+			</div>
+		</div>
+	</nav>
+	<div class="modal fade" id="saveLoadModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Save/Load the Scene</h4>
+				</div>
+				<div class="modal-body" id="saveLoadModalBody">
+					<div class="form-group">
+						<label for="saveTitle">Title</label>
+						<input type="text" name="saveTitle" id="saveTitle" class="form-control" value="Untitled">
+					</div>
+					<label for="saveSelect">Saves</label>
+					<select class="form-control" id="saveSelect" name="saveSelect" size="4">
+					</select>
+
+				</div>
+				<div class="modal-footer" id="save-load-modal-footer">
+					<div id="modal-primary-btns">
+						<button type="button" class="btn btn-info" id="saveButton">Save</button>
+						<button type="button" class="btn btn-primary" id="loadButton" data-dismiss="modal">Load</button>
+						<button type="button" class="btn btn-warning" id="deleteButton">Delete</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<canvas id="bg-canvas" width="500" height="500">
+		Please upgrade your browser to use this application.
+	</canvas>
+	<canvas id="main-canvas" width="500" height="500"></canvas>
+	<footer id="credits">
+		Made with
+		<span class="heart">♥</span>
+		by <a href="https://spenceralanwatson.github.io" target="_blank" id="github-link">Spencer Alan Watson</a>.
+	</footer>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/lodash.min.js"></script>
+	<script src="lib/stats.js"></script>
+	<script src="js/perspective.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>
